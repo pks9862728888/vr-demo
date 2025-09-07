@@ -20,6 +20,7 @@ const CustomCanvas = () => {
       <Polyhedron position={[-0.75, 0.75, 0]} name="C" geometry={geometry} />
       <Polyhedron position={[0.75, 0.75, 0]} name="D" geometry={geometry} />
       <OrbitControls />
+      <axesHelper args={[5]} />
       <Stats />
     </Canvas>
   )
