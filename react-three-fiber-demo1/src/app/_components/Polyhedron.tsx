@@ -39,10 +39,8 @@ const Polyhedron: React.FC<{
       onPointerOut={(e: any) => setHovered(false)}
       geometry={geometry[count]}>
       {/* <boxGeometry /> */}
-      <meshBasicMaterial
-        color={hovered ? 0xff0000 : 0x00ff00}
-        wireframe
-      />
+      <meshBasicMaterial color={hovered ? 0xff0000 : 0x00ff00} wireframe />
+      {/* <axesHelper /> */}
     </mesh>
   )
 }

@@ -21,6 +21,9 @@ const CustomCanvas = () => {
       <Polyhedron position={[0.75, 0.75, 0]} name="D" geometry={geometry} />
       <OrbitControls />
       <axesHelper args={[5]} />
+      <gridHelper
+      // rotation-x={Math.PI / 4}
+      />
       <Stats />
     </Canvas>
   )
