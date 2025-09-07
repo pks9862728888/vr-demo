@@ -39,3 +39,4 @@ import { Stats } from '@react-three/drei'
   A collection of useful helpers, abstractions, and premade components on top of R3F.
   Saves you from rewriting common 3D features again and again.
   Think of it as a toolbox for 3D in React.
+- leva
