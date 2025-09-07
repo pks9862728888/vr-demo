@@ -1,3 +1,4 @@
+import { OrbitControls, Stats } from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
 import { useMemo } from 'react'
 import * as THREE from 'three'
@@ -18,6 +19,8 @@ const CustomCanvas = () => {
       <Polyhedron position={[0.75, -0.75, 0]} name="B" geometry={geometry} />
       <Polyhedron position={[-0.75, 0.75, 0]} name="C" geometry={geometry} />
       <Polyhedron position={[0.75, 0.75, 0]} name="D" geometry={geometry} />
+      <OrbitControls />
+      <Stats />
     </Canvas>
   )
 }

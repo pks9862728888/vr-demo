@@ -28,6 +28,14 @@ Object3D -> Mesh
 
 ### Events - Mesh
 
+### React 3 js - Drei
+
+import { Stats } from '@react-three/drei'
+
 ## References
 
 - [react-three-fiber] (https://www.udemy.com/course/react-three-fiber/learn/lecture/34486996#overview)
+- react-three/drei
+  A collection of useful helpers, abstractions, and premade components on top of R3F.
+  Saves you from rewriting common 3D features again and again.
+  Think of it as a toolbox for 3D in React.
