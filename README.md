@@ -24,6 +24,10 @@ useFrame((_, delta) => {
 
 Contains geometry and a material
 
+Object3D -> Mesh
+
+### Events - Mesh
+
 ## References
 
 - [react-three-fiber] (https://www.udemy.com/course/react-three-fiber/learn/lecture/34486996#overview)
