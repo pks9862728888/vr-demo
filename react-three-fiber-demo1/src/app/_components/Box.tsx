@@ -6,7 +6,14 @@ const Box = (props: any) => {
   const ref = useRef<any>(undefined)
   const [hovered, setHovered] = useState(false)
   const [rotate, setRotate] = useState(false)
-  const geometry = useMemo(() => new THREE.BoxGeometry(), [])
+  const [count, setCount] = useState(0)
+  const geometry = useMemo(
+    () => [
+      new THREE.BoxGeometry(),
+      new THREE.SphereGeometry(0.785398)
+    ],
+    []
+  )
   useEffect(() => {
     if (ref.current) {
       console.log(ref.current.geometry.uuid)
@@ -25,11 +32,14 @@ const Box = (props: any) => {
       {...props}
       ref={ref}
       scale={hovered ? [1.1, 1.1, 1.1] : [1, 1, 1]}
-      onPointerDown={(e: any) => setRotate(!rotate)}
+      onPointerDown={(e: any) => {
+        setRotate(!rotate)
+        setCount((c) => (c + 1) % 2)
+      }}
       // onUpdate={(self: any) => console.log('props onUpdate', self)}
       onPointerOver={(e: any) => setHovered(true)}
       onPointerOut={(e: any) => setHovered(false)}
-      geometry={geometry}>
+      geometry={geometry[count]}>
       {/* <boxGeometry /> */}
       <meshBasicMaterial
         color={hovered ? 0xff0000 : 0x00ff00}
