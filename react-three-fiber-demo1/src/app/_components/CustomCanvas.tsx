@@ -14,16 +14,36 @@ const CustomCanvas = () => {
     ],
     []
   )
-  const color = useControls({
-    value: 'green'
-  })
+  const polyhedronControls = useMemo(() => {
+    return {
+      x: { value: 0, min: 0, max: Math.PI, step: 0.01 },
+      y: { value: 0, min: 0, max: Math.PI, step: 0.01 },
+      z: { value: 0, min: 0, max: Math.PI, step: 0.01 },
+      visible: true,
+      color: { value: 'lime' }
+    }
+  }, [])
+  const pA = useControls('Polyhedron A', polyhedronControls)
+  const pB = useControls('Polyhedron B', polyhedronControls)
   return (
     <Canvas camera={{ position: [0, 0, 3] }}>
-      <color attach="background" args={[color.value]} />
-      <Polyhedron position={[-0.75, -0.75, 0]} name="A" geometry={geometry} />
-      <Polyhedron position={[0.75, -0.75, 0]} name="B" geometry={geometry} />
-      <Polyhedron position={[-0.75, 0.75, 0]} name="C" geometry={geometry} />
-      <Polyhedron position={[0.75, 0.75, 0]} name="D" geometry={geometry} />
+      {/* <color attach="background" args={[color.value]} /> */}
+      <Polyhedron
+        position={[-1, 1, 0]}
+        rotation={[pA.x, pA.y, pA.z]}
+        visible={pA.visible}
+        color={pA.color}
+        name="A"
+        geometry={geometry}
+      />
+      <Polyhedron
+        position={[1, 1, 0]}
+        rotation={[pB.x, pB.y, pB.z]}
+        visible={pB.visible}
+        color={pB.color}
+        name="B"
+        geometry={geometry}
+      />
       <OrbitControls />
       <axesHelper args={[5]} />
       <gridHelper

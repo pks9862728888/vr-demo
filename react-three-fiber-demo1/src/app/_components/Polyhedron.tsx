@@ -4,12 +4,14 @@ import * as THREE from 'three'
 
 const Polyhedron: React.FC<{
   position: [number, number, number]
+  rotation: [number, number, number]
   geometry: THREE.BufferGeometry[]
   name: string
-}> = ({ position, geometry, name }) => {
+  color: string
+  visible: boolean
+}> = ({ position, rotation, geometry, name, color, visible }) => {
   const ref = useRef<any>(undefined)
   const [hovered, setHovered] = useState(false)
-  const [rotate, setRotate] = useState(false)
   const [count, setCount] = useState(0)
   useEffect(() => {
     if (ref.current) {
@@ -18,8 +20,9 @@ const Polyhedron: React.FC<{
   })
   useFrame((_, delta) => {
     if (ref.current) {
-      ref.current.rotation.x += delta * (rotate ? 1 : 0)
-      ref.current.rotation.y += 0.5 * delta * (rotate ? 1 : 0)
+      ref.current.rotation.x = rotation[0]
+      ref.current.rotation.y = rotation[1]
+      ref.current.rotation.z = rotation[2]
       // ref.current.rotation.z += delta * (rotate ? 1 : 0)
       // ref.current.position.y = Math.sin(_.clock.getElapsedTime() * 2) / 4
     }
@@ -29,9 +32,9 @@ const Polyhedron: React.FC<{
       position={position}
       name={name}
       ref={ref}
+      visible={visible}
       scale={hovered ? [1.1, 1.1, 1.1] : [1, 1, 1]}
       onPointerDown={(e: any) => {
-        setRotate(!rotate)
         setCount((c) => (c + 1) % geometry.length)
       }}
       // onUpdate={(self: any) => console.log('props onUpdate', self)}
@@ -39,7 +42,7 @@ const Polyhedron: React.FC<{
       onPointerOut={(e: any) => setHovered(false)}
       geometry={geometry[count]}>
       {/* <boxGeometry /> */}
-      <meshBasicMaterial color={hovered ? 0xff0000 : 0x00ff00} wireframe />
+      <meshBasicMaterial color={color} wireframe />
       {/* <axesHelper /> */}
     </mesh>
   )
