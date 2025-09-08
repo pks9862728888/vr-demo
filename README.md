@@ -28,6 +28,13 @@ Object3D -> Mesh
 
 ### Events - Mesh
 
+### Mesh material
+
+- meshBasicMaterial
+- meshNormalMaterial (ignores color)
+- meshPhongMaterial
+- meshStandardMaterial
+
 ### React 3 js - Drei
 
 import { Stats } from '@react-three/drei'
@@ -40,3 +47,4 @@ import { Stats } from '@react-three/drei'
   Saves you from rewriting common 3D features again and again.
   Think of it as a toolbox for 3D in React.
 - leva
+- [lecture] (https://sbcode.net/react-three-fiber/materials/)
